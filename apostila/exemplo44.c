@@ -10,4 +10,7 @@ int main() {
     printf("*px=%p, *py=%p\n", *px, *py);
     printf("&x=%p, &y=%p\n", &x, &y);
     
+    *px++;
+
+    printf("*px=%d\n", *px);
 }
