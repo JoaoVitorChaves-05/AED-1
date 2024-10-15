@@ -13,4 +13,9 @@ int main() {
     *px++;
 
     printf("*px=%d\n", *px);
+
+    for (int i = 0; i < 1000; i++) {
+        *px++;
+        printf("*px=%d\n", *px);
+    }
 }
