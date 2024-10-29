@@ -22,7 +22,15 @@ int checkNumber(char game[9][9], int line, int col, char n) {
         }
     }
 
-    int subgrid[2] = {((line / 3) + line % 3), ((col / 3) + col % 3)};
+    int initialElement[2] = {line - (line % 3), col - (col % 3)};
+
+    for (int l = initialElement[0]; l < l + 3; l++) {
+        for (int c = initialElement[1]; c < c + 3; c++) {
+            if (game[l][c] == n) {
+                return 0;
+            }
+        }
+    }
     
 
     return 1;
@@ -50,10 +58,27 @@ int main() {
 
             printf("Insira a linha: ");
             scanf("%d", &line);
+
+            while (line < 0 || line > 8) {
+                printf("Insira um número entre 0 e 8: ");
+                scanf("%d", &line);
+            }
+
             printf("Insira a coluna: ");
             scanf("%d", &col);
+
+            while (col < 0 || col > 8) {
+                printf("Insira um número entre 0 e 8: ");
+                scanf("%d", &col);
+            }
+
             printf("Insira o número: ");
             printf("%d", &n);
+
+            while (n < 0 || n > 9) {
+                printf("Insira um número entre 0 e 9: ");
+                scanf("%d", &line);
+            }
 
             if (!checkNumber(game, line, col, n)) {
                 printf("Jogada inválida!\n\n");
