@@ -80,7 +80,7 @@ int main() {
             }
 
             if (!checkNumber(game, line, col, n)) {
-                printf("Jogada inválida!\n\n");
+                printf("\n\nJogada inválida!\n\n");
             } else {
                 game[line][col] = n;
             }
