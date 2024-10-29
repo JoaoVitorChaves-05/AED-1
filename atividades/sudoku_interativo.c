@@ -3,9 +3,9 @@
 void renderGame(char game[9][9]) {
     for (int i = 0; i < 9; i++){
         for (int j = 0; j < 9; j++) {
-            printf('%s ', game[i][j]);
+            printf("%c ", game[i][j]);
         }
-        printf('\n');
+        printf("\n");
     }
 }
 
@@ -17,22 +17,21 @@ int checkNumber(char game[9][9], int line, int col, char n) {
     }
 
     for (int j = 0; j < 9; j++) {
-        if (game[line][col] == n) {
+        if (game[line][j] == n) {
             return 0;
         }
     }
 
     int initialElement[2] = {line - (line % 3), col - (col % 3)};
 
-    for (int l = initialElement[0]; l < l + 3; l++) {
-        for (int c = initialElement[1]; c < c + 3; c++) {
+    for (int l = initialElement[0]; l < initialElement[0] + 3; l++) {
+        for (int c = initialElement[1]; c < initialElement[1] + 3; c++) {
             if (game[l][c] == n) {
                 return 0;
             }
         }
     }
     
-
     return 1;
 }
 
@@ -50,41 +49,41 @@ int main() {
         printf("\n");
         printf("\n");
         printf("Insira -1 para sair e 1 para nova jogada: ");
-        scanf("%i", opt);
+        scanf("%i", &opt);
         
         if (opt == 1) {
             int line, col;
             char n;
 
             printf("Insira a linha: ");
-            scanf("%d", &line);
+            scanf("%i", &line);
 
             while (line < 0 || line > 8) {
                 printf("Insira um número entre 0 e 8: ");
-                scanf("%d", &line);
+                scanf("%i", &line);
             }
 
             printf("Insira a coluna: ");
-            scanf("%d", &col);
+            scanf("%i", &col);
 
             while (col < 0 || col > 8) {
                 printf("Insira um número entre 0 e 8: ");
-                scanf("%d", &col);
+                scanf("%i", &col);
             }
 
             printf("Insira o número: ");
-            printf("%d", &n);
+            scanf(" %c", &n);
 
-            while (n < 0 || n > 9) {
-                printf("Insira um número entre 0 e 9: ");
-                scanf("%d", &line);
+            while (n < '1' || n > '9') {
+                printf("Insira um número entre 1 e 9: ");
+                scanf(" %c", &n);
             }
 
             if (!checkNumber(game, line, col, n)) {
                 printf("Jogada inválida!\n\n");
+            } else {
+                game[line][col] = n;
             }
-
-            game[line][col] = n;
         }
 
     } while (opt != -1);
