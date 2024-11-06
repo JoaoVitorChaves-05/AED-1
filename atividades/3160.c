@@ -5,12 +5,17 @@ int main() {
     char L[300];
     char N[500];
     char S[50];
+    char tempN[500];
+    char originalL[300];
 
     gets(L);
     gets(N);
     gets(S);
 
-    if (strcmp(S, "nao")) {
+    strcpy(originalL, L);
+
+    if (strcmp(S, "nao") == 0) {
+
         char *names1 = strtok(L, " ");
 
         while (names1 != NULL) {
@@ -31,18 +36,42 @@ int main() {
 
     char *names = strtok(L, " ");
 
-    while (names != NULL) {
-        printf("%s ", names);
+    int count = 0;
 
-        if (strcmp(S, names)) {
-            char *newNames = strtok(N, " ");
+    while (names != NULL) {
+
+        if (strcmp(S, names) == 0) {
+
+            strcpy(tempN, N);
             
+            char *newNames = strtok(tempN, " ");
             while (newNames != NULL) {
-                printf("%s ", newNames);
+                printf(" ");
+                printf("%s", newNames);
+                newNames = strtok(NULL, " ");
             }
         }
+
+        printf("%s ", names);
+        count++;
+
         names = strtok(NULL, " ");
     }
+
+
+    char *completeNames = strtok(originalL, " ");
+
+    int count2 = 0;
+    while (completeNames != NULL) {
+        if (count == count2) {
+            printf("%s ", completeNames);
+        }
+
+        completeNames = strtok(NULL, " ");
+        count2++;
+    }
+
+    printf("\n");
 
     return 0;
 }
