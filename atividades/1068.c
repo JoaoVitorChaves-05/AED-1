@@ -27,7 +27,7 @@ int main() {
                     j++;
                 } else if (pilha[j-1] == '(' && math[i] == ')') {
                     j--;
-                } else {
+                } else if (math[i] == '(' || math[i] == ')') {
                     pilha[j] = math[i];
                     j++;
                 }

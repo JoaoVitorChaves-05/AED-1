@@ -1,0 +1,20 @@
+1) pilha = [1, 2, 3, 4, 5, 6, 7]
+	remove pilha[0] (1)
+	reorganiza
+2) pilha = [3, 4, 5, 6, 7, 2]
+	remove pilha[0] (3)
+	reorganiza
+3) pilha = [5, 6, 7, 2, 4]
+	remove pilha[0] (5)
+	reorganiza
+4) pilha = [7, 2, 4, 6]
+	remove pilha [0] (7)
+	reorganiza
+5) pilha = [4, 6, 2]
+	remove pilha[0] (4)
+	reorganiza
+6) pilha = [2, 6]
+	remove pilha[0] (2)
+	reorganiza
+7) pilha = [4]
+	carta remanescente
