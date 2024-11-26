@@ -6,15 +6,17 @@ const int MAX_N = 5;
 
 int main() {
     int N = 0;
-    char out[MAX_N][9];
+    char out[MAX_N][10];
 
     while (N < MAX_N) {
         char math[10000];
-        if (fgets(math, sizeof(math), stdin) == NULL) {
-            break;
-        }
+        //if (fgets(math, sizeof(math), stdin) == NULL) {
+            //break;
+        //}
 
-        math[strcspn(math, "\n")] = '\0'; 
+        //math[strcspn(math, "\n")] = '\0';
+
+        scanf("%s", &math); 
 
         char pilha[10000];
         int i = 0;
