@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-void insertionSort() {
+const int size = 10;
+
+void insertionSort(int arr[], int n) {
     for (int i = 0; i < n; i++) {
         int key = arr[i];
         int j = i - 1;
@@ -33,21 +35,28 @@ void printArray(int arr[], int n) {
 }
 
 int main() {
-    int arr1[10000];
-    int arr2[10000];
+    int arr1[size];
+    int arr2[size];
+    clock_t t;
 
-    for (int i = 0; i < 10000; i++) {
+    srand((unsigned)time(NULL));
+
+    for (int i = 0; i < size; i++) {
         int randomNumber = random() % 10001;
         arr1[i] = randomNumber;
         arr2[i] = randomNumber;
     }
 
     printf("Array original: ");
-    printArray(arr1, 10000);
+    printArray(arr1, size);
 
-    insertionSort(arr1, 10000);
+    t = clock();
+    insertionSort(arr1, size);
+    t = clock() - t;
 
     printf("Array ordenado: ");
-    printArray(arr1, 10000);
+    printArray(arr1, size);
+
+    printf("Tempo de execucao: %lf ms\n", ((double)t)/((CLOCKS_PER_SEC/1000)));
 
 }
