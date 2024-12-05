@@ -63,7 +63,7 @@ int main() {
         double insertionSortTime = 0;
         double mergeSortTime = 0;
 
-        for (int nExecucoes = 0; nExecucoes < 1; nExecucoes++) {
+        for (int nExecucoes = 0; nExecucoes < 3; nExecucoes++) {
             int *arr1 = malloc(size * sizeof(int));
             int *arr2 = malloc(size * sizeof(int));
             srand(time(NULL));
