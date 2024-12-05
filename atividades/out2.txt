@@ -1,0 +1,42 @@
+Para N = 5000.
+
+EXECUÇÃO 1
+Tempo de execucao do InsertionSort: 11.530000 ms
+Tempo de execucao do MergeSort: 0.636000 ms
+
+EXECUÇÃO 2
+Tempo de execucao do InsertionSort: 11.149000 ms
+Tempo de execucao do MergeSort: 0.615000 ms
+
+EXECUÇÃO 3
+Tempo de execucao do InsertionSort: 11.169000 ms
+Tempo de execucao do MergeSort: 0.637000 ms
+
+EXECUÇÃO 4
+Tempo de execucao do InsertionSort: 11.523000 ms
+Tempo de execucao do MergeSort: 0.623000 ms
+
+EXECUÇÃO 5
+Tempo de execucao do InsertionSort: 11.142000 ms
+Tempo de execucao do MergeSort: 0.617000 ms
+
+EXECUÇÃO 6
+Tempo de execucao do InsertionSort: 11.073000 ms
+Tempo de execucao do MergeSort: 0.611000 ms
+
+EXECUÇÃO 7
+Tempo de execucao do InsertionSort: 11.394000 ms
+Tempo de execucao do MergeSort: 0.621000 ms
+
+EXECUÇÃO 8
+Tempo de execucao do InsertionSort: 11.110000 ms
+Tempo de execucao do MergeSort: 0.640000 ms
+
+EXECUÇÃO 9
+Tempo de execucao do InsertionSort: 10.998000 ms
+Tempo de execucao do MergeSort: 0.633000 ms
+
+EXECUÇÃO 10
+Tempo de execucao do InsertionSort: 10.986000 ms
+Tempo de execucao do MergeSort: 0.616000 ms
+

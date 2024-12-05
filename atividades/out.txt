@@ -1,0 +1,100 @@
+
+Para N = 50000:
+Execução 1:
+ - InsertionSort: 1.161549 s
+ - MergeSort: 0.008104 s
+
+Média dos tempos:
+ - InsertionSort: 0.116155 s
+ - MergeSort: 0.000810 s
+
+
+Para N = 100000:
+Execução 1:
+ - InsertionSort: 4.686815 s
+ - MergeSort: 0.016725 s
+
+Média dos tempos:
+ - InsertionSort: 0.468682 s
+ - MergeSort: 0.001672 s
+
+
+Para N = 150000:
+Execução 1:
+ - InsertionSort: 10.494732 s
+ - MergeSort: 0.026823 s
+
+Média dos tempos:
+ - InsertionSort: 1.049473 s
+ - MergeSort: 0.002682 s
+
+
+Para N = 200000:
+Execução 1:
+ - InsertionSort: 18.448930 s
+ - MergeSort: 0.036538 s
+
+Média dos tempos:
+ - InsertionSort: 1.844893 s
+ - MergeSort: 0.003654 s
+
+
+Para N = 250000:
+Execução 1:
+ - InsertionSort: 28.925690 s
+ - MergeSort: 0.045963 s
+
+Média dos tempos:
+ - InsertionSort: 2.892569 s
+ - MergeSort: 0.004596 s
+
+
+Para N = 300000:
+Execução 1:
+ - InsertionSort: 41.489271 s
+ - MergeSort: 0.055685 s
+
+Média dos tempos:
+ - InsertionSort: 4.148927 s
+ - MergeSort: 0.005568 s
+
+
+Para N = 350000:
+Execução 1:
+ - InsertionSort: 56.746136 s
+ - MergeSort: 0.065902 s
+
+Média dos tempos:
+ - InsertionSort: 5.674614 s
+ - MergeSort: 0.006590 s
+
+
+Para N = 400000:
+Execução 1:
+ - InsertionSort: 74.169882 s
+ - MergeSort: 0.074694 s
+
+Média dos tempos:
+ - InsertionSort: 7.416988 s
+ - MergeSort: 0.007469 s
+
+
+Para N = 450000:
+Execução 1:
+ - InsertionSort: 94.062392 s
+ - MergeSort: 0.097232 s
+
+Média dos tempos:
+ - InsertionSort: 9.406239 s
+ - MergeSort: 0.009723 s
+
+
+Para N = 500000:
+Execução 1:
+ - InsertionSort: 115.396728 s
+ - MergeSort: 0.094825 s
+
+Média dos tempos:
+ - InsertionSort: 11.539673 s
+ - MergeSort: 0.009483 s
+
