@@ -1,0 +1,190 @@
+
+Para N = 50000:
+Execu├º├úo 1:
+ - InsertionSort: 1.408000 s
+ - MergeSort: 0.016000 s
+ - QuickSort: 0.007000 s
+Execu├º├úo 2:
+ - InsertionSort: 1.370000 s
+ - MergeSort: 0.016000 s
+ - QuickSort: 0.007000 s
+Execu├º├úo 3:
+ - InsertionSort: 1.381000 s
+ - MergeSort: 0.016000 s
+ - QuickSort: 0.006000 s
+
+M├®dia dos tempos:
+ - InsertionSort: 1.386333 s
+ - MergeSort: 0.016000 s
+ - QuickSort: 0.006667 s
+
+Para N = 100000:
+Execu├º├úo 1:
+ - InsertionSort: 5.552000 s
+ - MergeSort: 0.031000 s
+ - QuickSort: 0.014000 s
+Execu├º├úo 2:
+ - InsertionSort: 5.753000 s
+ - MergeSort: 0.031000 s
+ - QuickSort: 0.015000 s
+Execu├º├úo 3:
+ - InsertionSort: 5.531000 s
+ - MergeSort: 0.030000 s
+ - QuickSort: 0.016000 s
+
+M├®dia dos tempos:
+ - InsertionSort: 5.612000 s
+ - MergeSort: 0.030667 s
+ - QuickSort: 0.015000 s
+
+Para N = 150000:
+Execu├º├úo 1:
+ - InsertionSort: 12.415000 s
+ - MergeSort: 0.049000 s
+ - QuickSort: 0.023000 s
+Execu├º├úo 2:
+ - InsertionSort: 12.342000 s
+ - MergeSort: 0.046000 s
+ - QuickSort: 0.023000 s
+Execu├º├úo 3:
+ - InsertionSort: 12.310000 s
+ - MergeSort: 0.048000 s
+ - QuickSort: 0.023000 s
+
+M├®dia dos tempos:
+ - InsertionSort: 12.355667 s
+ - MergeSort: 0.047667 s
+ - QuickSort: 0.023000 s
+
+Para N = 200000:
+Execu├º├úo 1:
+ - InsertionSort: 22.382000 s
+ - MergeSort: 0.062000 s
+ - QuickSort: 0.034000 s
+Execu├º├úo 2:
+ - InsertionSort: 22.256000 s
+ - MergeSort: 0.062000 s
+ - QuickSort: 0.034000 s
+Execu├º├úo 3:
+ - InsertionSort: 22.013000 s
+ - MergeSort: 0.061000 s
+ - QuickSort: 0.033000 s
+
+M├®dia dos tempos:
+ - InsertionSort: 22.217000 s
+ - MergeSort: 0.061667 s
+ - QuickSort: 0.033667 s
+
+Para N = 250000:
+Execu├º├úo 1:
+ - InsertionSort: 35.090000 s
+ - MergeSort: 0.079000 s
+ - QuickSort: 0.046000 s
+Execu├º├úo 2:
+ - InsertionSort: 34.506000 s
+ - MergeSort: 0.078000 s
+ - QuickSort: 0.045000 s
+Execu├º├úo 3:
+ - InsertionSort: 34.153000 s
+ - MergeSort: 0.078000 s
+ - QuickSort: 0.045000 s
+
+M├®dia dos tempos:
+ - InsertionSort: 34.583000 s
+ - MergeSort: 0.078333 s
+ - QuickSort: 0.045333 s
+
+Para N = 300000:
+Execu├º├úo 1:
+ - InsertionSort: 49.380000 s
+ - MergeSort: 0.094000 s
+ - QuickSort: 0.058000 s
+Execu├º├úo 2:
+ - InsertionSort: 50.036000 s
+ - MergeSort: 0.097000 s
+ - QuickSort: 0.059000 s
+Execu├º├úo 3:
+ - InsertionSort: 49.759000 s
+ - MergeSort: 0.096000 s
+ - QuickSort: 0.061000 s
+
+M├®dia dos tempos:
+ - InsertionSort: 49.725000 s
+ - MergeSort: 0.095667 s
+ - QuickSort: 0.059333 s
+
+Para N = 350000:
+Execu├º├úo 1:
+ - InsertionSort: 68.891000 s
+ - MergeSort: 0.141000 s
+ - QuickSort: 0.074000 s
+Execu├º├úo 2:
+ - InsertionSort: 67.919000 s
+ - MergeSort: 0.110000 s
+ - QuickSort: 0.073000 s
+Execu├º├úo 3:
+ - InsertionSort: 68.272000 s
+ - MergeSort: 0.110000 s
+ - QuickSort: 0.073000 s
+
+M├®dia dos tempos:
+ - InsertionSort: 68.360667 s
+ - MergeSort: 0.120333 s
+ - QuickSort: 0.073333 s
+
+Para N = 400000:
+Execu├º├úo 1:
+ - InsertionSort: 87.896000 s
+ - MergeSort: 0.125000 s
+ - QuickSort: 0.086000 s
+Execu├º├úo 2:
+ - InsertionSort: 89.581000 s
+ - MergeSort: 0.130000 s
+ - QuickSort: 0.092000 s
+Execu├º├úo 3:
+ - InsertionSort: 90.365000 s
+ - MergeSort: 0.136000 s
+ - QuickSort: 0.097000 s
+
+M├®dia dos tempos:
+ - InsertionSort: 89.280667 s
+ - MergeSort: 0.130333 s
+ - QuickSort: 0.091667 s
+
+Para N = 450000:
+Execu├º├úo 1:
+ - InsertionSort: 113.840000 s
+ - MergeSort: 0.147000 s
+ - QuickSort: 0.104000 s
+Execu├º├úo 2:
+ - InsertionSort: 112.408000 s
+ - MergeSort: 0.141000 s
+ - QuickSort: 0.106000 s
+Execu├º├úo 3:
+ - InsertionSort: 112.243000 s
+ - MergeSort: 0.143000 s
+ - QuickSort: 0.109000 s
+
+M├®dia dos tempos:
+ - InsertionSort: 112.830333 s
+ - MergeSort: 0.143667 s
+ - QuickSort: 0.106333 s
+
+Para N = 500000:
+Execu├º├úo 1:
+ - InsertionSort: 139.159000 s
+ - MergeSort: 0.163000 s
+ - QuickSort: 0.123000 s
+Execu├º├úo 2:
+ - InsertionSort: 140.306000 s
+ - MergeSort: 0.160000 s
+ - QuickSort: 0.120000 s
+Execu├º├úo 3:
+ - InsertionSort: 140.325000 s
+ - MergeSort: 0.163000 s
+ - QuickSort: 0.128000 s
+
+M├®dia dos tempos:
+ - InsertionSort: 139.930000 s
+ - MergeSort: 0.162000 s
+ - QuickSort: 0.123667 s
