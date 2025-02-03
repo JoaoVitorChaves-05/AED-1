@@ -1,46 +1,117 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-void processPilha(int n) {
-    if (n == 0) return;
+typedef struct No {
+    int numero;
+    struct No *proximo;
+} No;
 
-    int pilha[n];
-    int descartadas[n - 1];
-    int topo = 0;
-    int base = n;
-    int descartadasIndex = 0;
+typedef struct Pilha {
+    No *topo;
+} Pilha;
 
-    for (int i = 1; i <= n; i++) {
-        pilha[i - 1] = i;
+void pop(Pilha *pilha, int *descartes);
+void push(Pilha *pilha, int numero);
+void moveTopo(Pilha *pilha);
+void inicializarPilha(Pilha *pilha);
+void limparPilha(Pilha *pilha);
+short quantidadeDescartes;
+
+void main()
+{
+    unsigned short carta;
+    Pilha pilha;
+    short i;
+
+    while (true)
+    {
+        scanf("%hu", &carta);
+
+        if (carta == 0 || carta > 50)
+            return;
+
+        inicializarPilha(&pilha);
+        int descartes[carta];
+
+        for (i = carta; i > 0; i--)
+            push(&pilha, i);
+
+        quantidadeDescartes = 0;
+        pop(&pilha, descartes);
+
+        printf("Discarded cards:");
+        for (i = 0; i < quantidadeDescartes; i++)
+        {
+            printf(" %d", descartes[i]);
+            if (i != quantidadeDescartes - 1)
+                printf(",");
+        }
+
+        printf("\nRemaining card: %d\n", pilha.topo->numero);
+        limparPilha(&pilha);
     }
-
-    while (topo < base - 1) {
-        descartadas[descartadasIndex++] = pilha[topo++];
-
-        pilha[base] = pilha[topo];
-        base++;
-        topo++;
-    }
-
-    printf("Discarded cards: ");
-    for (int i = 0; i < descartadasIndex; i++) {
-        if (i > 0) printf(", ");
-        printf("%d", descartadas[i]);
-    }
-    printf("\n");
-
-    printf("Remaining card: %d\n", pilha[topo]);
 }
 
-int main() {
-    int n;
+void inicializarPilha(Pilha *pilha)
+{
+    pilha->topo = NULL;
+}
 
-    while (1) {
-        scanf("%d", &n);
-        if (n == 0) break;
+void push(Pilha *pilha, int carta)
+{
+    No *auxiliar;
+    auxiliar = (No *)malloc(sizeof(No));
 
-        processPilha(n);
+    if (!auxiliar)
+        exit(1);
+
+    auxiliar->proximo = pilha->topo;
+    pilha->topo = auxiliar;
+    auxiliar->numero = carta;
+}
+
+void pop(Pilha *pilha, int *descartes)
+{
+    No *auxiliar;
+
+    if (auxiliar)
+    {
+        if (!pilha->topo->proximo)
+            return;
+
+        do
+        {
+            auxiliar = pilha->topo;
+            descartes[quantidadeDescartes++] = auxiliar->numero;
+            pilha->topo = pilha->topo->proximo;
+            free(auxiliar);
+            moveTopo(pilha);
+        } while (pilha->topo->proximo);
     }
+}
 
-    return 0;
+void moveTopo(Pilha *pilha)
+{
+    No *auxiliar, *base;
+    base = pilha->topo;
+    auxiliar = pilha->topo;
+
+    if (base->proximo)
+    {
+        while (base->proximo)
+            base = base->proximo;
+
+        pilha->topo = pilha->topo->proximo;
+        auxiliar->proximo = base->proximo;
+        base->proximo = auxiliar;
+    }
+}
+
+void limparPilha(Pilha *pilha)
+{
+    No *auxiliar;
+    auxiliar = pilha->topo;
+    pilha->topo = NULL;
+    free(auxiliar);
 }
