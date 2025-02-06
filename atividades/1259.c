@@ -1,63 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int inserePar(int valor, int lista[], int nPares) {
-    for (int j = 0; j < nPares; j++) {
-        if (lista[j] > valor) {
-            for (int k = nPares; k > j; k--) {
-                lista[k] = lista[k-1];
-            }
-            lista[j] = valor;
-            return 1;
-        }
-    }
-
-    lista[nPares] = valor;
-    return 1;
+int comparaCrescente(const void *a, const void *b) {
+    return (*(int *)a - *(int *)b);
 }
 
-int insereImpar(int valor, int lista[], int nImpares) {
-    for (int j = 0; j <= nImpares; j++) {
-        if (lista[j] < valor) {
-            for (int k = nImpares; k > j; k--) {
-                lista[k] = lista[k-1];
-            }
-            lista[j] = valor;
-            return 1;
-        }
-    }
-
-    lista[nImpares] = valor;
-    return 1;
+int comparaDecrescente(const void *a, const void *b) {
+    return (*(int *)b - *(int *)a);
 }
 
 int main() {
     int linhas;
-    scanf("%i", &linhas);
+    scanf("%d", &linhas);
 
-    int entradas[linhas];
-    int pares[linhas];
-    int impares[linhas];
-
-    int nPares = 0;
-    int nImpares = 0;
+    int pares[linhas], impares[linhas];
+    int nPares = 0, nImpares = 0, valor;
 
     for (int i = 0; i < linhas; i++) {
-        scanf("%i", &entradas[i]);
-        if (entradas[i] % 2 == 0) {
-            inserePar(entradas[i], pares, nPares);
-            nPares++;
+        scanf("%d", &valor);
+        if (valor % 2 == 0) {
+            pares[nPares++] = valor;
         } else {
-            insereImpar(entradas[i], impares, nImpares);
-            nImpares++;
+            impares[nImpares++] = valor;
         }
     }
 
-    for (int w = 0; w < nPares; w++) {
-        printf("%i\n", pares[w]);
+    qsort(pares, nPares, sizeof(int), comparaCrescente);
+    qsort(impares, nImpares, sizeof(int), comparaDecrescente);
+
+    for (int i = 0; i < nPares; i++) {
+        printf("%d\n", pares[i]);
+    }
+    for (int i = 0; i < nImpares; i++) {
+        printf("%d\n", impares[i]);
     }
 
-    for (int w = 0; w < nImpares; w++) {
-        printf("%i\n", impares[w]);
-    }
+    return 0;
 }
