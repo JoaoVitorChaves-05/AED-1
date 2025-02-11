@@ -4,29 +4,34 @@
 
 int main(int argc, char **argv)
 {
+    char input_string[MAX];
 
-    char string[MAX];
-    while (~scanf("%[^\n]%*c", string))
+    while (~scanf("%[^\n]%*c", input_string))
     {
-
-        int i = 0;
-        while (string[i])
+        int index = 0;
+        while (input_string[index])
         {
-
-            if (string[i] == ' ')
-                if (string[i + 1] == ',' || string[i + 1] == '.')
-                    putchar_unlocked(string[i + 1]), ++i;
+            if (input_string[index] == ' ')
+            {
+                if (input_string[index + 1] == ',' || input_string[index + 1] == '.')
+                {
+                    putchar_unlocked(input_string[index + 1]);
+                    ++index;
+                }
                 else
-                    putchar_unlocked(string[i]);
+                {
+                    putchar_unlocked(input_string[index]);
+                }
+            }
             else
-                putchar_unlocked(string[i]);
+            {
+                putchar_unlocked(input_string[index]);
+            }
 
-            ++i;
-
+            ++index;
         }
 
         putchar_unlocked('\n');
-
     }
 
     return 0;

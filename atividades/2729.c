@@ -48,15 +48,10 @@ int main() {
     scanf("%d", &N);
     getchar();
 
-    char all_lists[N][1001];
-
     for (int i = 0; i < N; i++) {
-        fgets(all_lists[i], sizeof(all_lists[i]), stdin);
-        all_lists[i][strcspn(all_lists[i], "\n")] = 0;
-    }
-
-    for (int i = 0; i < N; i++) {
-        process_list(all_lists[i]);
+        fgets(list, sizeof(list), stdin);
+        list[strcspn(list, "\n")] = 0;
+        process_list(list);
     }
 
     return 0;

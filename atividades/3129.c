@@ -6,19 +6,19 @@ int v[MAXSIZE];
 
 int main(int argc, char **argv)
 {
-
     int n, x;
-
     scanf("%d", &n);
 
-    int r, d;
-    r = d = 0;
+    int r = 0, d = 0;
     for (size_t i = 0; i < n; ++i)
     {
-
         scanf("%d", &x);
 
-        !v[x] ? ++d : ++r;
+        if (!v[x]) 
+            ++d; 
+        else 
+            ++r;
+
         ++v[x];
     }
 

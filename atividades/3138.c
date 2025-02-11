@@ -1,86 +1,77 @@
 #include <stdio.h>
 #include <string.h>
 
-typedef struct cores
+typedef struct cor
 {
+    int quantidade;
+    long long hash_val;
+} cor_t;
 
-    int qts;
-    long long hash;
-
-} cores_t;
-
-long long hash(const char *);
-int search(long long, size_t size, cores_t *);
-unsigned long long factorial(unsigned long long);
+long long calcular_hash(const char *);
+int procurar_cor(long long, size_t tamanho, cor_t *);
+unsigned long long calcular_fatorial(unsigned long long);
 
 int main(int argc, char **argv)
 {
-
     int n;
     scanf("%d", &n);
 
     size_t i = 0UL;
-    char cor[23] = {0};
-    cores_t cores[23] = {0};
-    int qts = 0;
+    char nome_cor[23] = {0};
+    cor_t cores[23] = {0};
+    int quantidade = 0;
 
     while (n--)
     {
+        scanf("%s %d", nome_cor, &quantidade);
 
-        scanf("%s %d", cor, &qts);
+        long long hash_val = calcular_hash(nome_cor);
+        int indice = procurar_cor(hash_val, i, cores);
 
-        long long _hash = hash(cor);
-        int x = search(_hash, i, cores);
-
-        if (x >= 0)
-            cores[x].qts += qts;
+        if (indice >= 0)
+            cores[indice].quantidade += quantidade;
         else
-            cores[i].hash = _hash, cores[i++].qts = qts;
+            cores[i].hash_val = hash_val, cores[i++].quantidade = quantidade;
     }
 
-    unsigned long long sum = 1LLU;
-    unsigned long long total = 0LLU;
+    unsigned long long soma_fatoriais = 1LLU;
+    unsigned long long total_elementos = 0LLU;
     for (size_t j = 0UL; j < i; ++j)
-        sum *= factorial(cores[j].qts), total += cores[j].qts;
+        soma_fatoriais *= calcular_fatorial(cores[j].quantidade), total_elementos += cores[j].quantidade;
 
     puts("Feliz aniversario Tobias!");
-    printf("%llu\n", factorial(total) / sum);
+    printf("%llu\n", calcular_fatorial(total_elementos) / soma_fatoriais);
 
     return 0;
 }
 
-unsigned long long factorial(unsigned long long n)
+unsigned long long calcular_fatorial(unsigned long long n)
 {
-
     if (n <= 1)
         return 1;
-
-    return n * factorial(n - 1);
+    return n * calcular_fatorial(n - 1);
 }
 
-long long hash(const char *string)
+long long calcular_hash(const char *string)
 {
-
     const int p = 31;
     const int m = 1e9 + 9;
-    long long hash_value = 0;
+    long long hash_val = 0;
     long long p_pow = 1;
 
     for (size_t i = 0; string[i]; ++i)
     {
-        hash_value = (hash_value + (string[i] - 'a' + 1) * p_pow) % m;
+        hash_val = (hash_val + (string[i] - 'a' + 1) * p_pow) % m;
         p_pow = (p_pow * p) % m;
     }
 
-    return hash_value;
+    return hash_val;
 }
 
-int search(long long hash, size_t size, cores_t *cores)
+int procurar_cor(long long hash, size_t tamanho, cor_t *cores)
 {
-
-    for (size_t i = 0; i < size; ++i)
-        if (hash == cores[i].hash)
+    for (size_t i = 0; i < tamanho; ++i)
+        if (hash == cores[i].hash_val)
             return i;
-
     return -1;
 }

@@ -12,46 +12,35 @@ int stayInList(int n, int *list, int size) {
 
 int main() {
     int qtdPessoas;
-    scanf("%i", &qtdPessoas);
+    scanf("%d", &qtdPessoas);
     int fila[qtdPessoas];
-    int i = 0;
     
-    while(scanf("%i", &fila[i]) == 1) {
-        i++;
-
-        if (i >= qtdPessoas) {
-            break;
-        }
+    for (int i = 0; i < qtdPessoas; i++) {
+        scanf("%d", &fila[i]);
     }
 
     int qtdPessoas2;
-    scanf("%i", &qtdPessoas2);
+    scanf("%d", &qtdPessoas2);
     int sairam[qtdPessoas2];
-
-    i = 0;
-    while(scanf("%i", &sairam[i]) == 1) {
-        i++;
-
-        if (i >= qtdPessoas2) {
-            break;
-        }
+    
+    for (int i = 0; i < qtdPessoas2; i++) {
+        scanf("%d", &sairam[i]);
     }
 
     int novaFila[qtdPessoas];
     int index = 0;
-    for (int k = 0; k < qtdPessoas; k++) {
-        int stay = stayInList(fila[k], sairam, qtdPessoas2);
-        if (stay == 0) {
-            novaFila[index] = fila[k];
-            index++;
+    for (int i = 0; i < qtdPessoas; i++) {
+        if (!stayInList(fila[i], sairam, qtdPessoas2)) {
+            novaFila[index++] = fila[i];
         }
     }
 
-    for (int w = 0; w < index; w++) {
-        printf("%i", novaFila[w]);
-        if (w + 1 != index)
+    for (int i = 0; i < index; i++) {
+        printf("%d", novaFila[i]);
+        if (i < index - 1)
             printf(" ");
     }
-
     printf("\n");
+
+    return 0;
 }

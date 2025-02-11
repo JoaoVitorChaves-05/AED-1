@@ -1,52 +1,46 @@
 #include <stdio.h>
 
-void print_d(int n);
+void print_digits(int num);
 
 int main(int argc, char **argv)
 {
+    float total_height, max_height, height_ratio;
+    int num_cases, x, y, time, above_threshold, below_threshold;
 
-    float n, m, ratio;
-    int s, t, x, y, above, below;
+    scanf("%f %f %d%*c", &total_height, &max_height, &num_cases);
 
-    scanf("%f %f %d%*c", &n, &m, &s);
+    height_ratio = total_height / max_height;
+    above_threshold = below_threshold = 0;
 
-    ratio = n / m;
-    above = below = 0;
-
-    while (s--)
+    while (num_cases--)
     {
-
-        scanf("%d %d %u", &x, &y, &t);
-        if ((float)x <= (y * ratio))
-            above += t;
+        scanf("%d %d %u", &x, &y, &time);
+        if ((float)x <= (y * height_ratio))
+            above_threshold += time;
         else
-            below += t;
+            below_threshold += time;
     }
 
-    print_d(above);
+    print_digits(above_threshold);
     putchar_unlocked(' ');
-    print_d(below);
+    print_digits(below_threshold);
     putchar_unlocked('\n');
 
     return 0;
 }
 
-inline void print_d(int n)
+inline void print_digits(int num)
 {
+    int index = 10;
+    char output_buffer[10];
+    do
+    {
+        output_buffer[--index] = (num % 10) + '0';
+        num /= 10;
+    } while (num);
 
-	int i = 10;
-	char output_buffer[10];
-	do{
-
-		output_buffer[--i] = (n % 10) + '0';
-		n /= 10;
-
-	}while(n);
-
-	do
-	{
-		putchar_unlocked(output_buffer[i]);
-
-	}while(++i < 10);
-
+    do
+    {
+        putchar_unlocked(output_buffer[index]);
+    } while (++index < 10);
 }
