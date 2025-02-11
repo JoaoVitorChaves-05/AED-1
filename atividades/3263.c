@@ -2,48 +2,47 @@
 #include <string.h>
 #include <stdbool.h>
 
-char *flip(char *, size_t);
-bool check(char *, char *, size_t);
+char *invert_bits(char *, size_t);
+bool are_strings_equal(char *, char *, size_t);
 
 int main()
 {
+    int num_operations;
+    char original_string[1010] = {0};
+    char modified_string[1010] = {0};
 
-    int n;
-    char string1[1010] = {0};
-    char string2[1010] = {0};
+    scanf("%d", &num_operations);
+    scanf("%s", original_string);
+    scanf("%s", modified_string);
 
-    scanf("%d", &n);
-    scanf("%s", string1);
-    scanf("%s", string2);
+    size_t string_length = strlen(original_string);
 
-    size_t len = strlen(string1);
-
-    if ((n % 2 == 1 && check(string1, flip(string2, len), len)) || (n % 2 == 0 && check(string1, string2, len)))
+    if ((num_operations % 2 == 1 && are_strings_equal(original_string, invert_bits(modified_string, string_length), string_length)) || 
+        (num_operations % 2 == 0 && are_strings_equal(original_string, modified_string, string_length)))
+    {
         puts("Deletion succeeded");
+    }
     else
+    {
         puts("Deletion failed");
+    }
 
     return 0;
 }
 
-bool check(char *s1, char *s2, size_t len)
+bool are_strings_equal(char *str1, char *str2, size_t len)
 {
-
     for (int i = 0; i < len; ++i)
-        if (s1[i] != s2[i])
+        if (str1[i] != str2[i])
             return false;
 
     return true;
 }
 
-char *flip(char *s, size_t len)
+char *invert_bits(char *str, size_t len)
 {
-
     for (int i = 0; i < len; ++i)
-        if (s[i] == '0')
-            s[i] = '1';
-        else
-            s[i] = '0';
+        str[i] = (str[i] == '0') ? '1' : '0';
 
-    return s;
+    return str;
 }

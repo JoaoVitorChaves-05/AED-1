@@ -1,91 +1,82 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct g_
+typedef struct Edge
 {
+    int node1, node2, weight;
+} Edge;
 
-    int u, v, w;
+#define MAX_NODES 600
+#define MAX_EDGES (((MAX_NODES) * (MAX_NODES - 1)) >> 1)
 
-} g_t;
+int parent[MAX_NODES];
+int size[MAX_NODES];
+Edge edges[MAX_EDGES];
 
-#define MAXSIZE 600
-#define MAXSIZEG (((MAXSIZE) * (MAXSIZE - 1)) >> 1)
-
-int id[MAXSIZE];
-int sz[MAXSIZE];
-g_t g[MAXSIZEG];
-
-int find(int);
-int kruskal(int);
-void swap(int *, int *);
-int compare(const void *, const void *);
+int find_parent(int);
+int kruskal_algorithm(int);
+void swap_values(int *, int *);
+int compare_edges(const void *, const void *);
 
 int main(int argc, char **argv)
 {
+    int nodes, edges_count, additional_value;
+    int node1, node2, weight;
 
-    int n, m, o;
-    int u, v, w;
+    scanf("%d %d %d", &nodes, &edges_count, &additional_value);
 
-    scanf("%d %d %d", &n, &m, &o);
+    for (int i = 0; i < edges_count; ++i)
+        scanf("%d %d %d", &edges[i].node1, &edges[i].node2, &edges[i].weight);
 
-    for (int i = 0; i < m; ++i)
-        scanf("%d %d %d", &g[i].u, &g[i].v, &g[i].w);
+    for (int i = 0; i <= nodes; ++i)
+        parent[i] = i, size[i] = 1;
 
-    for (int i = 0; i <= n; ++i)
-        id[i] = i, sz[i] = 1;
+    qsort(edges, edges_count, sizeof(Edge), compare_edges);
 
-    qsort(g, m, sizeof(g_t), compare);
-
-    printf("%d\n", kruskal(m));
+    printf("%d\n", kruskal_algorithm(edges_count));
 
     return 0;
 }
 
-int compare(const void *a, const void *b)
+int compare_edges(const void *a, const void *b)
 {
-
-    return ((g_t *)a)->w - ((g_t *)b)->w;
+    return ((Edge *)a)->weight - ((Edge *)b)->weight;
 }
 
-inline void swap(int *a, int *b)
+inline void swap_values(int *a, int *b)
 {
-
-    int c = *a;
+    int temp = *a;
     *a = *b;
-    *b = c;
+    *b = temp;
 }
 
-int find(int u)
+int find_parent(int node)
 {
-
-    if (u == id[u])
-        return u;
+    if (node == parent[node])
+        return node;
     else
-        return id[u] = find(id[u]);
+        return parent[node] = find_parent(parent[node]);
 }
 
-int kruskal(int __c)
+int kruskal_algorithm(int edge_count)
 {
-
-    int ans = 0;
-    for (int i = 0; i < __c; ++i)
+    int total_weight = 0;
+    for (int i = 0; i < edge_count; ++i)
     {
+        int root1 = find_parent(edges[i].node1);
+        int root2 = find_parent(edges[i].node2);
 
-        int p = find(g[i].u);
-        int q = find(g[i].v);
-
-        if (p != q)
+        if (root1 != root2)
         {
+            if (size[root1] > size[root2])
+                swap_values(&root1, &root2);
 
-            if (sz[p] > sz[q])
-                swap(&p, &q);
+            parent[root1] = root2;
+            size[root2] += size[root1];
 
-            id[p] = q;
-            sz[q] += sz[p];
-
-            ans += g[i].w;
+            total_weight += edges[i].weight;
         }
     }
 
-    return ans * 2;
+    return total_weight * 2;
 }

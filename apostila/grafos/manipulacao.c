@@ -123,7 +123,6 @@ int removeAresta(Graph *G, int origem, int destino, int eh_digrafo) {
     return 1;
 }
 
-
 int main() {
     Graph* gr = criaGrafo(10, 7, 0); // (numVertices, grau_max, grau)
     adicionaAresta(gr, 0, 1, 0, 1); // 0 -> 1

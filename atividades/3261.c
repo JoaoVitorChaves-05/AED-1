@@ -1,37 +1,35 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAXSIZE 112345
+#define MAX_LENGTH 112345
 
-static inline int max(int a, int b)
+static inline int get_max(int a, int b)
 {
-
     return a > b ? a : b;
 }
 
 int main()
 {
+    char first_string[MAX_LENGTH] = {0};
+    char second_string[MAX_LENGTH] = {0};
 
-    char string1[MAXSIZE] = {0};
-    char string2[MAXSIZE] = {0};
+    scanf("%s", first_string);
+    scanf("%s", second_string);
 
-    scanf("%s", string1);
-    scanf("%s", string2);
+    int prefix_match = 0, suffix_match = 0;
+    size_t first_length = strlen(first_string);
+    size_t second_length = strlen(second_string);
 
-    int i = 0, j = 0;
-    size_t s1len = strlen(string1);
-    size_t s2len = strlen(string2);
+    while (prefix_match < first_length && prefix_match < second_length && first_string[prefix_match] == second_string[prefix_match])
+        ++prefix_match;
 
-    while (i < s1len && i < s2len && string1[i] == string2[i])
-        ++i;
+    while (suffix_match < first_length && suffix_match < second_length && first_string[first_length - 1 - suffix_match] == second_string[second_length - 1 - suffix_match])
+        ++suffix_match;
 
-    while (j < s1len && j < s2len && string1[s1len - 1 - j] == string2[s2len - 1 - j])
-        ++j;
+    suffix_match = second_length - suffix_match;
+    int result = get_max(suffix_match - prefix_match, 0);
 
-    j = s2len - j;
-    int ans = max(j - i, 0);
-
-    printf("%d\n", max(ans, s2len - s1len));
+    printf("%d\n", get_max(result, second_length - first_length));
 
     return 0;
 }

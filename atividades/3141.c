@@ -2,46 +2,27 @@
 
 int main(int argc, char **argv)
 {
+    char person_name[55];
+    int birth_day, birth_month, birth_year;
+    int current_day, current_month, current_year;
 
-    char name[55];
-    int dda, mma, aaa;
-    int ddn, mmn, aan;
+    scanf("%[^\n]%*c", person_name);
+    scanf("%d/%d/%d", &birth_day, &birth_month, &birth_year);
+    scanf("%d/%d/%d", &current_day, &current_month, &current_year);
 
-    scanf("%[^\n]%*c", name);
-    scanf("%d/%d/%d", &dda, &mma, &aaa);
-    scanf("%d/%d/%d", &ddn, &mmn, &aan);
+    int age = birth_year - current_year;
 
-    int idade = aaa - aan;
+    int days_in_month[] = {0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
 
-    int d[] = {0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
+    int birth_total_days = days_in_month[birth_month - 1] + birth_day;
+    int current_total_days = days_in_month[current_month - 1] + current_day;
 
-    int xa = d[mma - 1] + dda;
-    int xn = d[mmn - 1] + ddn;
-
-    if ((idade == 0) || (xa < xn))
-        printf("Voce tem %d anos %s.\n", (idade - 1) < 0 ? 0 : idade - 1, name);
-    else if (xa == xn)
-        printf("Feliz aniversario!\nVoce tem %d anos %s.\n", idade, name);
+    if ((age == 0) || (birth_total_days < current_total_days))
+        printf("Voce tem %d anos %s.\n", (age - 1) < 0 ? 0 : age - 1, person_name);
+    else if (birth_total_days == current_total_days)
+        printf("Feliz aniversario!\nVoce tem %d anos %s.\n", age, person_name);
     else
-        printf("Voce tem %d anos %s.\n", idade, name);
+        printf("Voce tem %d anos %s.\n", age, person_name);
 
-    // Outra solução possível.
-    
-    // if (mma == mmn && dda == ddn)
-    //     printf("Feliz aniversario!\nVoce tem %d anos %s.\n", idade, name);
-    // else if (mma > mmn)
-    //     printf("Voce tem %d anos %s.\n", idade, name);
-    // else
-    // {
-    //     if (mma == mmn)
-    //     {
-    //         if (dda > ddn)
-    //             printf("Voce tem %d anos %s.\n", idade, name);
-    //         else
-    //             printf("Voce tem %d anos %s.\n", (idade - 1) < 0 ? 0 : idade - 1, name);
-    //     }
-    //     else
-    //         printf("Voce tem %d anos %s.\n", (idade - 1) < 0 ? 0 : idade - 1, name);
-    // }
     return 0;
 }

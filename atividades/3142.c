@@ -4,17 +4,17 @@
 
 int main(int argc, char **argv)
 {
-    
-    char string[20];
-    while (~scanf("%s", string))
+    char column_name[20];
+
+    while (~scanf("%s", column_name))
     {
+        unsigned long long column_value = 0UL;
 
-        unsigned long long sum = 0UL;
-        for (int i = strlen(string) - 1, j = 0; i >= 0; --i, ++j)
-            sum += (string[i] - 'A' + 1) * (unsigned long long)pow(26, j);
+        for (int i = strlen(column_name) - 1, j = 0; i >= 0; --i, ++j)
+            column_value += (column_name[i] - 'A' + 1) * (unsigned long long)pow(26, j);
 
-        if (sum <= 16384)
-            printf("%llu\n", sum);
+        if (column_value <= 16384)
+            printf("%llu\n", column_value);
         else
             puts("Essa coluna nao existe Tobias!");
     }

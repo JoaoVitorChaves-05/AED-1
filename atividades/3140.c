@@ -2,27 +2,24 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-int main(int argc, char *argv)
+int main(int argc, char *argv[])
 {
+    char input_line[1100];
+    bool inside_body = false;
 
-    char string[1100];
-
-    bool body = false;
-    while (~scanf("%[^\n]%*c", string))
+    while (~scanf("%[^\n]%*c", input_line))
     {
-
-        if (strstr(string, "<body>"))
+        if (strstr(input_line, "<body>"))
         {
-
-            body = true;
+            inside_body = true;
             continue;
         }
 
-        if (body && strstr(string, "</body>"))
-            body = false;
+        if (inside_body && strstr(input_line, "</body>"))
+            inside_body = false;
 
-        if (body)
-            puts(string);
+        if (inside_body)
+            puts(input_line);
     }
 
     return 0;

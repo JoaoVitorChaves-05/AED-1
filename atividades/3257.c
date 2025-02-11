@@ -1,33 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int compare(const void *, const void *b);
+int compare_descending(const void *, const void *);
 
 int main()
 {
+    int num_values;
+    scanf("%d", &num_values);
 
-    int n;
-    scanf("%d", &n);
+    int values[num_values];
 
-    int vals[n];
+    for (int i = 0; i < num_values; ++i)
+        scanf("%d", &values[i]);
 
-    for (int i = 0; i < n; ++i)
-        scanf("%d", &vals[i]);
+    qsort(values, num_values, sizeof(int), compare_descending);
 
-    qsort(vals, n, sizeof(int), compare);
+    int result = values[0] + 2;
+    for (int i = 1; i < num_values; ++i)
+        if (i + 2 + values[i] > result)
+            result = i + 2 + values[i];
 
-    int ans = vals[0] + 2;
-    for (int i = 1; i < n; ++i)
-        if (i + 2 + vals[i] > ans)
-            ans = i + 2 + vals[i];
-
-    printf("%d\n", ans);
+    printf("%d\n", result);
 
     return 0;
 }
 
-int compare(const void *a, const void *b)
+int compare_descending(const void *a, const void *b)
 {
-
     return *(int *)b - *(int *)a;
 }

@@ -1,40 +1,37 @@
 #include <stdio.h>
 #include <math.h>
 
-double var;
+double variance;
 
-double f(double x)
+double gaussian_function(double x)
 {
-
-    return exp(-x * x / (var * 2));
+    return exp(-x * x / (variance * 2));
 }
 
-double prob(double r1, double r2)
+double probability(double lower_radius, double upper_radius)
 {
-
-    return f(r1) - f(r2);
+    return gaussian_function(lower_radius) - gaussian_function(upper_radius);
 }
 
 int main()
 {
-
-    double radii[7] = {0.0};
-    double expPts[] = {50.0, 25.0, 10.5, 31.5, 10.5, 21.0};
+    double radii_values[7] = {0.0};
+    double expected_points[] = {50.0, 25.0, 10.5, 31.5, 10.5, 21.0};
 
     for (int i = 1; i <= 6; ++i)
-        scanf("%lf", &radii[i]);
+        scanf("%lf", &radii_values[i]);
 
-    double stddev;
-    scanf("%lf", &stddev);
+    double standard_deviation;
+    scanf("%lf", &standard_deviation);
 
-    var = stddev * stddev;
+    variance = standard_deviation * standard_deviation;
 
-    double expect = 0.0;
+    double expected_value = 0.0;
 
     for (int i = 0; i < 6; ++i)
-        expect += (prob(radii[i], radii[i + 1]) * expPts[i]);
+        expected_value += (probability(radii_values[i], radii_values[i + 1]) * expected_points[i]);
 
-    printf("%.10g\n", expect);
+    printf("%.10g\n", expected_value);
 
     return 0;
 }

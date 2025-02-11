@@ -3,73 +3,67 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define MAXSIZE 1234
+#define MAX_ARRAY_SIZE 1234
 
-int n;
+int num_elements;
 double ratio;
-int values[MAXSIZE];
+int element_values[MAX_ARRAY_SIZE];
 
-int solve(int, double, double, int);
-int compare(const void *, const void *);
+int calculate_min_cuts(int, double, double, int);
+int compare_values(const void *, const void *);
 
-static inline double max(double a, double b)
+static inline double get_max(double a, double b)
 {
-
     return a > b ? a : b;
 }
 
-static inline double min(double a, double b)
+static inline double get_min(double a, double b)
 {
-
     return a < b ? a : b;
 }
 
 int main()
 {
+    scanf("%lf %d", &ratio, &num_elements);
 
-    scanf("%lf %d", &ratio, &n);
+    for (int i = 0; i < num_elements; ++i)
+        scanf("%d", &element_values[i]);
 
-    for (int i = 0; i < n; ++i)
-        scanf("%d", &values[i]);
-
-    qsort(values, n, sizeof(int), compare);
-    printf("%d\n", solve(0, values[0], values[0], 0));
+    qsort(element_values, num_elements, sizeof(int), compare_values);
+    printf("%d\n", calculate_min_cuts(0, element_values[0], element_values[0], 0));
 
     return 0;
 }
 
-int solve(int k, double curMin, double curMax, int curCuts)
+int calculate_min_cuts(int index, double current_min, double current_max, int current_cuts)
 {
+    if (index == num_elements)
+        return current_cuts;
 
-    if (k == n)
-        return curCuts;
+    double max_possible_value = current_min / ratio;
+    double min_possible_value = current_max * ratio;
+    int lower_bound = (int)ceil(element_values[index] / max_possible_value);
+    int upper_bound = (int)(element_values[index] / min_possible_value);
 
-    double absMax = curMin / ratio;
-    double absMin = curMax * ratio;
-    int low = (int)ceil(values[k] / absMax);
-    int high = (int)(values[k] / absMin);
+    if (index == 0)
+        lower_bound = 1, upper_bound = element_values[0];
 
-    if (k == 0)
-        low = 1, high = values[0];
-
-    for (int i = low; i <= high; ++i)
+    for (int i = lower_bound; i <= upper_bound; ++i)
     {
+        double new_value = element_values[index] / i;
 
-        double newL = values[k] / i;
+        if (index == 0)
+            current_min = current_max = new_value;
 
-        if (k == 0)
-            curMin = curMax = newL;
-
-        int ans = solve(k + 1, min(curMin, newL), max(curMax, newL), curCuts + i - 1);
-        if (ans != -1)
-            return ans;
+        int result = calculate_min_cuts(index + 1, get_min(current_min, new_value), get_max(current_max, new_value), current_cuts + i - 1);
+        if (result != -1)
+            return result;
     }
 
     return -1;
 }
 
-int compare(const void *a, const void *b)
+int compare_values(const void *a, const void *b)
 {
-
     return *(int *)a - *(int *)b;
 }
